@@ -1,0 +1,23 @@
+{
+  "name": "reactprojectautomation",
+  "version": "1.0.0",
+  "description": "Reactjs Projects Setup automation using CLI",
+  "main": "app.js",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "cli-progress": "^3.7.0",
+    "prompt": "^1.0.0",
+    "react": "^16.13.1",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "yarn run test",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "Nodejs"
+  ],
+  "author": "shrey vijayvargiya",
+  "license": "ISC"
+}

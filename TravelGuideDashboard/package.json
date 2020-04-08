@@ -1,7 +1,20 @@
 {
-  "dependencies": {
-    "next": "^9.3.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+ "scripts": {
+  "start": "next start",
+  "build": "next build",
+  "dev": "next"
+ },
+ "dependencies": {
+  "@emotion/styled": "^10.0.27",
+  "axios": "^0.19.2",
+  "babel-plugin-styled-components": "^1.10.7",
+  "google-maps-react": "^2.0.2",
+  "mapbox-gl": "^1.9.1",
+  "next": "^9.3.4",
+  "react": "^16.13.1",
+  "react-dom": "^16.13.1",
+  "react-geocode": "^0.2.1",
+  "react-map-gl": "^5.2.3",
+  "styled-components": "^5.1.0"
+ }
 }
