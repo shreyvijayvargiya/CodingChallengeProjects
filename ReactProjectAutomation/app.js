@@ -2,9 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt');
 const chalk = require('chalk');
-const { spawn , exec } = require('child_process');
+const exec= require('child_process').execSync;
 const cliProgress = require('cli-progress');
+const opn = require('opn');
 const { indexFileCode, packageFileCode } = require('./filesCode');
+
 
 const schema = {
 	properties: {
@@ -47,7 +49,7 @@ prompt.get( schema, ( err, result) => {
 		process.stdout.write(chalk.bold.black(`${stdout} \n\n `));
 	});
 
-	process.stdout.write(messageTheme('Seting up the project directory for you \n\n '));
+	process.stdout.write(chalk.bold.green('Seting up the project directory for you \n\n '));
 
 	const folderCreatingString = `cd ${result.projectname} && mkdir pages, components, modules, public`
 	exec(folderCreatingString, (err, stderr, stdout)=>{
@@ -59,14 +61,14 @@ prompt.get( schema, ( err, result) => {
 		bar1.update(200);
 		bar1.stop();
 		process.stdout.write(chalk.bold.green(`Project Setup Done \n\n`));
-		process.stdout.write(chalk.bold.black(`${stdout} \n\n`));
+		console.log(chalk.bold.black(`${stdout} \n\n`));
 	});
 
 	process.stdout.write(messageTheme('Creating package.json file \n\n '));
 
-	const packageFilePath = path.join(__dirname + `/${result.projectname}` + '/package.json');
+	const packageFilePath = path.join(__dirname + `/${result.projectname}` +'/package.json');
 
-	fs.writeFile(packageFilePath, packageFileCode, (err) => {
+	fs.appendFileSync(packageFilePath, packageFileCode, (err) => {
 		if(err) {
 			console.log(chalk.bold.red(err + '\n\n'));
 			return;
@@ -74,53 +76,69 @@ prompt.get( schema, ( err, result) => {
 		process.stdout.write(chalk.bold.green(`package.json file scripts added successfully \n\n`));
 	});
 	
+
+	process.stdout.write(chalk.bold.yellow('Creating index.js file inside pages folder \n\n '));
+
 	const indexFilePath = path.join(__dirname + `/${result.projectname}` + '/pages/index.js');
-	// fs.writeFile(indexFilePath, indexFileCode, (err) => {
-	// 	if(err) {
-	// 		console.log(chalk.bold.red(err + '\n\n'));
-	// 		return;
-	// 	};
-	// 	bar1.start(200, 0);
-	// 	bar1.update(200);
-	// 	bar1.stop();
-	// 	process.stdout.write(chalk.bold.black(`Index.js file code added inside pages folder \n\n`));
-	// });
-		
 
-	// const child = spawn(`mkdir ${result.projectname} && cd ${result.projectname} && npm install`, [ ], { shell: true });
+	fs.writeFileSync(indexFilePath, indexFileCode, (err) => {
+		if(err) {
+			console.log(chalk.bold.red(err + '\n\n'));
+			return;
+		};
+		bar1.start(200, 0);
+		bar1.update(200);
+		bar1.stop();
+		process.stdout.write(chalk.bold.black(`Index.js file code added inside pages folder \n\n`));
+	});
 
-	// child.stdout.on('data', (data) => {
-	// 	bar1.start(200, 0);
-	// 	bar1.update(200);
-	// 	bar1.stop();
-	// 	console.log(`output: ${data} \n`);
-	// });
-	// child.stderr.on('data', (data) => {
-	// 	console.log(`stderr: ${data} \n`)
-	// });
-	// child.on('exit' , (code, signal) => {
-	// 	console.log(`npm init inside project directory is done with code ${code} and signal ${signal} \n`);
-	// });
-	// child.on('close', (data) => {
-	// 	console.log('Close the package installation \n');
-	// })
+	process.stdout.write(chalk.bold.green(`Index.js file inside pages added successfully \n\n`));
 
-	// process.stdout.write(messageTheme('Installing nextjs, react and react-dom packages inside project directory \n'));
+	process.stdout.write(messageTheme(' Installing next, react and react-dom npm package\n\n '));
 
-	// child.spawn('yarn add next react react-dom', [ ], { shell: true });
-	// child.stdout.on('data', (data) => {
-	// 	process.stdout.write(messageTheme('Installing next, react and react-dom in project directory \n'));
-	// });
-	// child.stderr.on('data', (data) => {
-	// 	console.log(`stderr: ${data}`)
-	// });
-	// child.on('exit' , (code, signal) => {
-	// 	console.log('Next, react and react-dom are successfully installed \n');
-	// 	console.log(chalk.bold.orange('Please check package.json file of project directory for confirmation \n'));
-	// });
+	process.stdout.write(chalk.bold.green(`This will take time, PLEASE WAIT! \n\n`));
+
+	exec(`cd ${result.projectname} && yarn add next react react-dom`, (err, stderr, stdout) => {
+		if(err) {
+			console.log(chalk.bold.red(err + '\n\n'));
+			return;
+		};
+		bar1.start(200, 0);
+		bar1.update(200);
+		bar1.stop();
+		console.log(chalk.bold.green(`${stdout} \n\n`));
+	});
+	process.stdout.write(chalk.bold.green(`next, react, react-dom packages added successfully \n\n`));
+
+
+	process.stdout.write(chalk.bold.blue(' Installing styled-components and babel-plugin-styled-components npm package\n\n '));
+
+	process.stdout.write(chalk.bold.green(`This will take time, PLEASE WAIT! \n\n`));
+
+
+	exec(`cd ${result.projectname} && yarn add styled-components babel-plugin-styled-components`, ( err, stderr, stdout ) =>{
+		if(err) {
+			console.log(chalk.bold.red(err + '\n\n'));
+			return;
+		};
+		bar1.start(200, 0);
+		bar1.update(200);
+		bar1.stop();
+		console.log(chalk.bold.green(`${stdout} \n\n`));
+	});
+	process.stdout.write(chalk.bold.green(`styled-components babel-plugin-styled-components added successfully \n\n`));
+
+	process.stdout.write(messageTheme('Initializing next js project by running "yarn run dev" \n\n '));
+
+	exec(`cd ${result.projectname} && yarn run dev`, ( err, stderr, stdout ) => {
+
+		console.log(chalk.bold.whiteBright('Opening "localhost:3000" to see the project running  \n\n '));
+		opn('http://localhost:3000/');	
+
+		if(err) {
+			console.log(chalk.bold.red(err + '\n\n'));
+			return;
+		};
+		console.log(chalk.bold.green(`${stdout} \n\n`));
+	});
 });
-
-function errorFunction(err){
-	process.stdout.write(chalk.bold.red(err));
-	process.stdout.write(chalk.bold.rgb(100,200,200)(`Press 'rs +' to restat the bundle \n`));
-};
