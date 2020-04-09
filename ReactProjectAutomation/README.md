@@ -6,9 +6,9 @@
 <h2>How to try</h2>
 <ol>
 	<li><strong>Clone the Repo</strong></li>
-	<li>Run<strong>yarn install</strong></li>
-	<li>Run<strong>cd ReactProjectAutomation</strong></li>
-	<li>Run<strong>node app.js</strong></li>
+	<li>Run<strong> yarn install</strong></li>
+	<li>Run<strong> cd ReactProjectAutomation</strong></li>
+	<li>Run<strong> node app.js</strong></li>
 </ol>
 
 <h2>What is  Automation ?</h2>
@@ -18,7 +18,7 @@
 <ol>
 	<li>Automation reduce the redundant work</li>
 	<li>Decrease the projects setups time[Actually no time is required to setup using our tool]</li>
-	<li>developer has to spend more time in writing code instead of creating folder</li>
+	<li>Developer can spend more time in writing code instead of creating folder</li>
 </ol>
 
 <h2>What we do ? </h2>
