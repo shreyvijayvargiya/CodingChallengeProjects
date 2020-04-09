@@ -17,17 +17,17 @@
 <h2>What is the use case of automation</h2>
 <ol>
 	<li>Automation reduce the redundant work</li>
-	<li>Decrease the projects setups time[Actually no time is required to setup using our tool]</li>
+	<li>Decrease the projects setups time <strong>[Actually no time is required to setup using our tool]</strong></li>
 	<li>Developer can spend more time in writing code instead of creating folder</li>
 </ol>
 
 <h2>What we do ? </h2>
-<p>Well we auotmate the redundant work for developers</p>
+<p>We automate the redundant work for developers</p>
 
 <h2>How we handle automation and reduces setup time</h2>
 </p>Pretty Simple!, in the following ways we handle automation</p>
 <ol>
-	<li>We open a command let say "yarn run automation" </li>
+	<li>We open a command let say <strong> "yarn run automation"</strong> </li>
 	<li>The command line ask developer to states the project name he/she wants to create</li>
 	</li>Rest is HISTORY!!, the command itself installed next, react,react-dom, styled-components packages in the folder with the project name </li>
 	<li>Not only, it creates folders and installed packages but edit the package.json file and index.js file inside pages folder and run the next project on your local machine</li>
