@@ -15,7 +15,6 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "cli-progress": "^3.7.0",
-    "opn": "^6.0.0",
     "prompt": "^1.0.0"
   }
 }

@@ -4,7 +4,6 @@ const prompt = require('prompt');
 const chalk = require('chalk');
 const exec= require('child_process').execSync;
 const cliProgress = require('cli-progress');
-const opn = require('opn');
 const { indexFileCode, packageFileCode } = require('./filesCode');
 
 
@@ -19,7 +18,7 @@ const schema = {
 	}
 };
 
-const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+const bar1 = new cliProgress.SingleBar({ }, cliProgress.Presets.shades_classic);
  
 
 prompt.start();
@@ -98,7 +97,8 @@ prompt.get( schema, ( err, result) => {
 
 	process.stdout.write(chalk.bold.green(`This will take time, PLEASE WAIT! \n\n`));
 
-	exec(`cd ${result.projectname} && yarn add next react react-dom`, (err, stderr, stdout) => {
+	exec(`cd ${result.projectname} && yarn add next react react-dom`, { stdio: 'inherit' }, 
+	(err, stderr, stdout) => {
 		if(err) {
 			console.log(chalk.bold.red(err + '\n\n'));
 			return;
@@ -116,7 +116,8 @@ prompt.get( schema, ( err, result) => {
 	process.stdout.write(chalk.bold.green(`This will take time, PLEASE WAIT! \n\n`));
 
 
-	exec(`cd ${result.projectname} && yarn add styled-components babel-plugin-styled-components`, ( err, stderr, stdout ) =>{
+	exec(`cd ${result.projectname} && yarn add styled-components babel-plugin-styled-components`,{ stdio: 'inherit' } ,
+	 ( err, stderr, stdout ) =>{
 		if(err) {
 			console.log(chalk.bold.red(err + '\n\n'));
 			return;
@@ -130,10 +131,7 @@ prompt.get( schema, ( err, result) => {
 
 	process.stdout.write(messageTheme('Initializing next js project by running "yarn run dev" \n\n '));
 
-	exec(`cd ${result.projectname} && yarn run dev`, ( err, stderr, stdout ) => {
-
-		console.log(chalk.bold.whiteBright('Opening "localhost:3000" to see the project running  \n\n '));
-		opn('http://localhost:3000/');	
+	exec(`cd ${result.projectname} && yarn run dev`, { stdio: 'inherit' }, ( err, stderr, stdout ) => {
 
 		if(err) {
 			console.log(chalk.bold.red(err + '\n\n'));
