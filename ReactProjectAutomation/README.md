@@ -12,9 +12,7 @@
 </ol>
 
 <h2>Demo</h2>
-<video width="50% height="50%" controls>
-	<source src="https://drive.google.com/open?id=1njd1lL3NUE2U0gVvCkDgoQ3-MamxfAVJ" type="video/mp4"> 
-</video>
+<img src="./reactAutomationVideo.gif" width="100% height="50%"> 
 
 
 <h2>What is  Automation ?</h2>
