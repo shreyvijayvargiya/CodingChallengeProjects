@@ -3,6 +3,14 @@
 
 <h2>Welcome to React Project Automation Code<h2>
 
+<h2>How to try</h2>
+<ol>
+	<li><strong>Clone the Repo</strong></li>
+	<li>Run<strong>yarn install</strong></li>
+	<li>Run<strong>cd ReactProjectAutomation</strong></li>
+	<li>Run<strong>node app.js</strong></li>
+</ol>
+
 <h2>What is  Automation ?</h2>
 <p>Anything which can be done using code instead manually is termed as automation</p>
 
@@ -27,7 +35,6 @@
 
 <h3>AMAZING, isin'it</h3>
 
-<h2>How to try</h2>
-<p>Clone the repo and run yarn install followed by node app.js after going inside ReactProjectAutomation folder, that's it</p>
+
 
 
