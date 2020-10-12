@@ -9,7 +9,7 @@
 	<li>Run<strong> yarn install</strong></li>
 	<li>Run<strong> cd ReactProjectAutomation</strong></li>
 	<li>Run<strong> node app.js</strong></li>
-	<li>Open<strong>localhost:3000</strong> to see webpage running</li>
+	<li>Open<strong> localhost:3000</strong> to see webpage running</li>
 </ol>
 
 <h2>Demo</h2>
