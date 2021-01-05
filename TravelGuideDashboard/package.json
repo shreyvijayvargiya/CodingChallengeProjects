@@ -6,7 +6,7 @@
  },
  "dependencies": {
   "@emotion/styled": "^10.0.27",
-  "axios": "^0.19.2",
+  "axios": "^0.21.1",
   "babel-plugin-styled-components": "^1.10.7",
   "google-maps-react": "^2.0.2",
   "mapbox-gl": "^1.9.1",
